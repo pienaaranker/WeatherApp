@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0800219C258002BF00BE3870 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800219B258002BF00BE3870 /* Images.swift */; };
 		080B243E257FF33300C87AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B243D257FF33300C87AA3 /* AppDelegate.swift */; };
 		080B2440257FF33300C87AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B243F257FF33300C87AA3 /* SceneDelegate.swift */; };
 		080B2442257FF33300C87AA3 /* WeatherDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B2441257FF33300C87AA3 /* WeatherDashViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0800219B258002BF00BE3870 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		080B243A257FF33300C87AA3 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080B243D257FF33300C87AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		080B243F257FF33300C87AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +112,6 @@
 				080B2498257FFA9E00C87AA3 /* AppConfig */,
 				080B2497257FFA8B00C87AA3 /* Views */,
 				080B2493257FFA8400C87AA3 /* Extensions */,
-				080B247E257FF84500C87AA3 /* Theme.swift */,
 				080B2443257FF33300C87AA3 /* Main.storyboard */,
 				080B2446257FF33300C87AA3 /* Assets.xcassets */,
 				080B2448257FF33300C87AA3 /* LaunchScreen.storyboard */,
@@ -159,6 +160,8 @@
 				080B243D257FF33300C87AA3 /* AppDelegate.swift */,
 				080B243F257FF33300C87AA3 /* SceneDelegate.swift */,
 				080B2486257FF9C600C87AA3 /* AppConfig.swift */,
+				080B247E257FF84500C87AA3 /* Theme.swift */,
+				0800219B258002BF00BE3870 /* Images.swift */,
 			);
 			path = AppConfig;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				080B243E257FF33300C87AA3 /* AppDelegate.swift in Sources */,
 				080B247F257FF84500C87AA3 /* Theme.swift in Sources */,
 				080B2487257FF9C600C87AA3 /* AppConfig.swift in Sources */,
+				0800219C258002BF00BE3870 /* Images.swift in Sources */,
 				080B2471257FF5F600C87AA3 /* WeatherDashViewModel.swift in Sources */,
 				080B2440257FF33300C87AA3 /* SceneDelegate.swift in Sources */,
 			);

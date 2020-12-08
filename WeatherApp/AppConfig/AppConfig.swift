@@ -12,11 +12,13 @@ class AppConfig {
     
     static let shared = AppConfig()
     
-    private var theme: Theme
+    var theme: Theme
     
     init() {
-        self.theme = Theme(sunnyColor: UIColor(hex: "#47AB2F")!,
-                           CloudyColor: UIColor(hex: "#54717A")!,
-                           RainyColor: UIColor(hex: "#57575D")!)
+        self.theme = Theme(primaryFont: UIFont(name: "Futura", size: 14)!,
+                           primaryTextColor: .white,
+                           sunnyColor: UIColor(hex: "#47AB2F")!,
+                           cloudyColor: UIColor(hex: "#54717A")!,
+                           rainyColor: UIColor(hex: "#57575D")!)
     }
 }
