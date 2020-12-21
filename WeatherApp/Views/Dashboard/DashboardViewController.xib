@@ -11,8 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageView" destination="5sZ-mZ-FF3" id="yz0-sW-RLN"/>
-                <outlet property="degreeSymbolLabel" destination="cof-Zg-wok" id="kbY-bl-g8W"/>
-                <outlet property="degreesLabel" destination="XVk-hN-7Zt" id="7Bj-JG-pa3"/>
+                <outlet property="degreesView" destination="dHZ-00-uQ3" id="SVf-5g-kTc"/>
                 <outlet property="tableView" destination="0ss-rC-VOT" id="Jqu-Jv-RSD"/>
                 <outlet property="view" destination="BuU-OR-iEh" id="F8Z-Jb-pix"/>
                 <outlet property="weatherTypeLabel" destination="pfb-jq-8TX" id="7lp-s6-Gea"/>
@@ -31,43 +30,38 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfb-jq-8TX">
-                    <rect key="frame" x="186" y="216.5" width="42" height="20.5"/>
+                    <rect key="frame" x="186" y="216.5" width="42" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVk-hN-7Zt">
-                    <rect key="frame" x="186" y="186" width="42" height="22.5"/>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cof-Zg-wok">
-                    <rect key="frame" x="230" y="186" width="42" height="22.5"/>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-00-uQ3" customClass="DegreesLabelView" customModule="WeatherApp" customModuleProvider="target">
+                    <rect key="frame" x="132" y="59" width="150" height="150"/>
+                    <viewLayoutGuide key="safeArea" id="Tgf-8Y-lL9"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="1f5-87-N8w"/>
+                        <constraint firstAttribute="height" constant="150" id="MLc-rq-Yas"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="ohE-qw-Ox8"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="top" secondItem="BuU-OR-iEh" secondAttribute="top" id="2Nh-Y2-mUY"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="top" secondItem="5sZ-mZ-FF3" secondAttribute="bottom" id="2TL-Ea-8z2"/>
-                <constraint firstItem="pfb-jq-8TX" firstAttribute="top" secondItem="XVk-hN-7Zt" secondAttribute="bottom" constant="8" symbolic="YES" id="4w8-ha-Qmw"/>
-                <constraint firstItem="cof-Zg-wok" firstAttribute="top" secondItem="XVk-hN-7Zt" secondAttribute="top" id="Eas-n1-xzM"/>
                 <constraint firstItem="ohE-qw-Ox8" firstAttribute="centerY" secondItem="5sZ-mZ-FF3" secondAttribute="bottom" id="Geu-uD-Tiu"/>
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="centerX" secondItem="5sZ-mZ-FF3" secondAttribute="centerX" id="Hh4-5t-Fe1"/>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="trailing" secondItem="ohE-qw-Ox8" secondAttribute="trailing" id="JD9-6T-RsB"/>
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="centerY" secondItem="5sZ-mZ-FF3" secondAttribute="centerY" id="TkZ-fP-T9g"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="trailing" secondItem="ohE-qw-Ox8" secondAttribute="trailing" id="VnI-hC-s2T"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="bottom" secondItem="ohE-qw-Ox8" secondAttribute="bottom" id="XHe-D9-WFM"/>
-                <constraint firstItem="XVk-hN-7Zt" firstAttribute="centerX" secondItem="pfb-jq-8TX" secondAttribute="centerX" id="gdw-oI-Wo5"/>
+                <constraint firstItem="dHZ-00-uQ3" firstAttribute="centerX" secondItem="pfb-jq-8TX" secondAttribute="centerX" id="hAi-YF-PcU"/>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="hP6-8r-9Vc"/>
-                <constraint firstItem="cof-Zg-wok" firstAttribute="leading" secondItem="XVk-hN-7Zt" secondAttribute="trailing" constant="2" id="seo-tn-rFE"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="yB9-GY-yda"/>
+                <constraint firstItem="pfb-jq-8TX" firstAttribute="top" secondItem="dHZ-00-uQ3" secondAttribute="bottom" constant="7.5" id="zm8-8O-zwY"/>
             </constraints>
-            <point key="canvasLocation" x="-54" y="-530"/>
+            <point key="canvasLocation" x="-55.072463768115945" y="-530.35714285714289"/>
         </view>
     </objects>
     <resources>

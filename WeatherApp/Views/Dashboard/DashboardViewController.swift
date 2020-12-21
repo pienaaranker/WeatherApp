@@ -10,8 +10,7 @@ import UIKit
 class DashboardViewController: UIViewController, DashboardViewable {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var degreesLabel: UILabel!
-    @IBOutlet weak var degreeSymbolLabel: UILabel!
+    @IBOutlet weak var degreesView: DegreesLabelView!
     @IBOutlet weak var weatherTypeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +30,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
         
         configureImage()
         configureLabels()
+        viewModel.getWeatherCurrent()
     }
     
     func configureImage() {
@@ -39,22 +39,15 @@ class DashboardViewController: UIViewController, DashboardViewable {
     }
     
     func configureLabels() {
-        degreesLabel.font = AppConfig.shared.theme.primaryFont.withSize(68)
-        degreesLabel.textColor = AppConfig.shared.theme.primaryTextColor
-        degreesLabel.textAlignment = .center
-        degreesLabel.text = "25"
-        
-        degreeSymbolLabel.font = AppConfig.shared.theme.primaryFont.withSize(68)
-        degreeSymbolLabel.textColor = AppConfig.shared.theme.primaryTextColor
-        degreeSymbolLabel.text = "°"
+        degreesView.configure(temperature: "25",
+                              font: AppConfig.shared.theme.primaryFont.withSize(68),
+                              textColor: AppConfig.shared.theme.primaryTextColor)
         
         weatherTypeLabel.font = AppConfig.shared.theme.primaryFont.withSize(36)
         weatherTypeLabel.textColor = AppConfig.shared.theme.primaryTextColor
         weatherTypeLabel.textAlignment = .center
         weatherTypeLabel.text = "SUNNY"
     }
-    
-    
 }
 
 // MARK: - TableView Delegate & Data Source

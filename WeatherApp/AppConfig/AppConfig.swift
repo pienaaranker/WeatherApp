@@ -12,6 +12,7 @@ class AppConfig {
     
     static let shared = AppConfig()
     
+    var weatherAPIKey = "ffe1ad3d5e771f0fb531d29cb9a234d5"
     var theme: Theme
     
     init() {

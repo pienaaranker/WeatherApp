@@ -7,11 +7,20 @@
 
 import Foundation
 
-class DashboardViewModel {
+class DashboardViewModel: WeatherManagerDelegate {
     
     weak var viewable: DashboardViewable?
+    private var weatherManager: WeatherManager {
+        return WeatherManager(delegate: self)
+
+    }
+        
     
     init(viewable: DashboardViewable) {
         self.viewable = viewable
+    }
+    
+    func getWeatherCurrent() {
+        weatherManager.getCurrentWeather(for: "Cape Town")
     }
 }
