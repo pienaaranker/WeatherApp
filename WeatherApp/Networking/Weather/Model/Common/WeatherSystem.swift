@@ -8,9 +8,10 @@
 import Foundation
 
 struct WeatherSystem: Codable {
-    var id: Int
-    var country: String
-    var sunset: Int
-    var type: Int
-    var sunrise: Int
+    var id: Int?
+    var country: String?
+    var sunset: Int?
+    var type: Int?
+    var sunrise: Int?
+    var pod: String?
 }

@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol WeatherManagerDelegate: class {
-    
+    func getCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?)
 }

@@ -14,4 +14,6 @@ struct WeatherMain: Codable {
     var temp_max: Double
     var humidity: Int
     var pressure: Int
+    var sea_level: Int?
+    var grnd_level: Int?
 }

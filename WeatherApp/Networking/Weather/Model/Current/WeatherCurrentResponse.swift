@@ -13,6 +13,8 @@ struct WeatherCurrentResponse: Codable {
     var base: String
     var sys: WeatherSystem
     var clouds: WeatherClouds?
+    var rain: WeatherRain?
+    var snow: WeatherSnow?
     var id: Int
     var cod: Int
     var wind: WeatherWind?

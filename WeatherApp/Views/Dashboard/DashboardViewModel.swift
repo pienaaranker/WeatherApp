@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
 class DashboardViewModel: WeatherManagerDelegate {
+    
     
     weak var viewable: DashboardViewable?
     private var weatherManager: WeatherManager {
@@ -22,5 +24,13 @@ class DashboardViewModel: WeatherManagerDelegate {
     
     func getWeatherCurrent() {
         weatherManager.getCurrentWeather(for: "Cape Town")
+    }
+    
+    func getWeatherForecast() {
+        weatherManager.getWeatherForecast(for: "Cape Town")
+    }
+    
+    func getCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {
+        
     }
 }

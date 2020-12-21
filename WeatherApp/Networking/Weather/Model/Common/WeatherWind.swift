@@ -10,4 +10,5 @@ import Foundation
 struct WeatherWind: Codable {
     var speed: Double
     var deg: Double
+    var gust: Double?
 }

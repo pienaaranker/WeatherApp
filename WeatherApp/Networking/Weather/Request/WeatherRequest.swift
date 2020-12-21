@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherCurrentRequest: APIRequest{
+class WeatherRequest: APIRequest{
     var q: String
     var appid: String
     

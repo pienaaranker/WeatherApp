@@ -30,12 +30,48 @@ class WeatherManager {
     }
     
     func getCurrentWeather(for cityName: String) {
-        let request = WeatherCurrentRequest(q: cityName, appid: AppConfig.shared.weatherAPIKey)
+        let request = WeatherRequest(q: cityName, appid: AppConfig.shared.weatherAPIKey)
         guard let parameters = request.toQueryDictionary(),
             let url = WeatherManager.endPoints.weatherCurrent(parameters: parameters) else {
             fatalError("Could not parse weather api to url")
         }
         
-        networkManager.performRequest(url: url, method: .get)
+        networkManager.performRequest(url: url, method: .get) { response, error in
+            if let data = response {
+                do {
+                    let currentWeather = try JSONDecoder().decode(WeatherCurrentResponse.self, from: data)
+                    self.delegate?.getCurrentWeatherResponded(with: currentWeather, error: nil)
+                    print(currentWeather.main)
+                } catch (let error ) {
+                    print("Could not parse json: \(error)")
+                }
+            } else if let error = error {
+                self.delegate?.getCurrentWeatherResponded(with: nil, error: error)
+                print(error)
+            } else {
+                print("parsing error")
+            }
+        }
+    }
+    
+    func getWeatherForecast(for cityName: String) {
+        let request = WeatherRequest(q: cityName, appid: AppConfig.shared.weatherAPIKey)
+        guard let parameters = request.toQueryDictionary(),
+              let url = WeatherManager.endPoints.weatherForcast(parameters: parameters) else {
+            fatalError("Could not parse weather api to url")
+        }
+        
+        networkManager.performRequest(url: url, method: .get) { response, error in
+            if let data = response {
+               do {
+                    let forecast = try JSONDecoder().decode(WeatherForecastResponse.self, from: data)
+                    print(forecast.cnt)
+               } catch (let error ) {
+                   print("Could not parse json: \(error)")
+               }
+            } else if let error = error {
+                self.delegate?.getCurrentWeatherResponded(with: nil, error: error)
+            }
+        }
     }
 }
