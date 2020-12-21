@@ -18,13 +18,15 @@ class WeatherManager {
     }
     
     struct endPoints {
-        private static let domain = "api.openweathermap.org/data/2.5"
+        private static let domain = "//api.openweathermap.org/data/2.5"
         
         static func weatherCurrent(parameters: [String: String]) -> URL? {
             return NetworkManager.url(from: "\(domain)/weather", queryParameters: parameters)
         }
         
-        static let weatherForcast = "\(domain)/forecast"
+        static func weatherForcast(parameters: [String: String]) -> URL? {
+            return NetworkManager.url(from: "\(domain)/forecast", queryParameters: parameters)
+        }
     }
     
     func getCurrentWeather(for cityName: String) {
