@@ -10,4 +10,5 @@ import Alamofire
 
 protocol WeatherManagerDelegate: class {
     func getCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?)
+    func getWeatherForecastResponded(with weatherForecast: WeatherForecastResponse?, error: AFError?)
 }

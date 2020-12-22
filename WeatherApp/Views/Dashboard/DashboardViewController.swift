@@ -30,7 +30,8 @@ class DashboardViewController: UIViewController, DashboardViewable {
         
         configureImage()
         configureLabels()
-        viewModel.getWeatherForecast()
+        viewModel.getWeatherCurrent()
+        viewModel.getWeatherForecast()        
     }
     
     func configureImage() {

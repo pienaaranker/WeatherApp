@@ -20,7 +20,7 @@ struct APIError: Error {
 ///         let kind: ErrorKind
 ///     }
 }
-class NetworkManager {
+class NetworkManager: NetworkManagable {
     
     func performRequest(url: URL, method: HTTPMethod, completion: @escaping (Data?, AFError?) -> Void) {
         print("Performing request: \(url)")

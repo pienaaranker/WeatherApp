@@ -10,7 +10,7 @@ import MapKit
 
 class WeatherManager {
     
-    private let networkManager = NetworkManager()
+    var networkManager: NetworkManagable = NetworkManager()
     private let delegate: WeatherManagerDelegate?
     
     init(delegate: WeatherManagerDelegate?) {
@@ -63,12 +63,12 @@ class WeatherManager {
         
         networkManager.performRequest(url: url, method: .get) { response, error in
             if let data = response {
-               do {
+                do {
                     let forecast = try JSONDecoder().decode(WeatherForecastResponse.self, from: data)
-                    print(forecast.cnt)
-               } catch (let error ) {
-                   print("Could not parse json: \(error)")
-               }
+                    self.delegate?.getWeatherForecastResponded(with: forecast, error: nil)
+                } catch (let error ) {
+                    print("Could not parse json: \(error)")
+                }
             } else if let error = error {
                 self.delegate?.getCurrentWeatherResponded(with: nil, error: error)
             }
