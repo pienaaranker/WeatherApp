@@ -10,7 +10,6 @@ import Alamofire
 
 class DashboardViewModel: WeatherManagerDelegate {
     
-    
     private weak var viewable: DashboardViewable?
     
     var weatherManager: WeatherManager?    
@@ -22,30 +21,42 @@ class DashboardViewModel: WeatherManagerDelegate {
         self.weatherManager = WeatherManager(delegate: self)
     }
     
-    func getWeatherCurrent() {
-        weatherManager?.getCurrentWeather(for: "Cape Town")
+    func fetchWeatherCurrent() {
+        weatherManager?.fetchCurrentWeather(for: "Cape Town")
     }
     
-    func getWeatherForecast() {
-        weatherManager?.getWeatherForecast(for: "Cape Town")
+    func fetchWeatherForecast() {
+        weatherManager?.fetchWeatherForecast(for: "Cape Town")
     }
     
-    func getCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {
+    func fetchCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {
         if let error = error {
-            //TODO: Show api error through viewable
-        } else {
+            self.viewable?.showError(message: error.errorDescription ?? "")
+        } else if let currentWeather = currentWeather {
             self.currentWeather = currentWeather
-            //TODO: reload table with valid data
+            self.viewable?.updateCurrentWeather(currentWeather: currentWeather)
+            self.viewable?.reloadTableView()
         }
     }
     
-    func getWeatherForecastResponded(with weatherForecast: WeatherForecastResponse?, error: AFError?) {
+    func fetchWeatherForecastResponded(with weatherForecast: WeatherForecastResponse?, error: AFError?) {
         
             if let error = error {
-                //TODO: Show api error through viewable
+                self.viewable?.showError(message: error.errorDescription ?? "")
             } else {
                 self.weatherForecast = weatherForecast
-                //TODO: reload table with valid data
+                self.viewable?.reloadTableView()
             }
+    }
+    
+    func getHeaderData() -> DashboardHeaderViewData? {
+        guard let current = self.currentWeather else {
+            return nil
+        }
+        
+        return DashboardHeaderViewData(min: current.main.temp_min,
+                                        current: current.main.temp,
+                                        max: current.main.temp_max,
+                                        color: AppConfig.shared.theme.sunnyColor)
     }
 }

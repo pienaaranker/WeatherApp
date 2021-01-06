@@ -18,7 +18,7 @@ struct WeatherSnow: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.last1h = try container.decode(Double.self, forKey: .last1h)
-        self.last3h = try container.decode(Double.self, forKey: .last3h)
+        self.last1h = try container.decodeIfPresent(Double.self, forKey: .last1h)
+        self.last3h = try container.decodeIfPresent(Double.self, forKey: .last3h)
     }
 }

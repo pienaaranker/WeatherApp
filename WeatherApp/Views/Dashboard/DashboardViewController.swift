@@ -30,8 +30,13 @@ class DashboardViewController: UIViewController, DashboardViewable {
         
         configureImage()
         configureLabels()
-        viewModel.getWeatherCurrent()
-        viewModel.getWeatherForecast()        
+        configureTableView()
+        viewModel.fetchWeatherCurrent()
+        viewModel.fetchWeatherForecast()        
+    }
+    
+    func configureView() {
+        view.backgroundColor = AppConfig.shared.theme.sunnyColor
     }
     
     func configureImage() {
@@ -47,7 +52,29 @@ class DashboardViewController: UIViewController, DashboardViewable {
         weatherTypeLabel.font = AppConfig.shared.theme.primaryFont.withSize(36)
         weatherTypeLabel.textColor = AppConfig.shared.theme.primaryTextColor
         weatherTypeLabel.textAlignment = .center
-        weatherTypeLabel.text = "SUNNY"
+        weatherTypeLabel.text = "Loading..."
+    }
+    
+    func configureTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.backgroundColor = AppConfig.shared.theme.sunnyColor
+        self.tableView.sectionFooterHeight = 0.5
+        self.tableView.estimatedSectionHeaderHeight = 80
+    }
+    
+    // MARK: - Viewable
+    func showError(message: String) {
+        self.showAlert(title: GlobalStrings.Alert.errorTitle, message: message, handler: nil)
+    }
+    
+    func updateCurrentWeather(currentWeather: WeatherCurrentResponse) {
+//        degreesView.setTemperature(temperature: "\(currentWeather.main.feels_like)")
+        weatherTypeLabel.text = currentWeather.weather?.first?.description.uppercased()
+    }
+    
+    func reloadTableView() {        
+        self.tableView.reloadData()
     }
 }
 
@@ -63,6 +90,17 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let data = viewModel.getHeaderData() else {
+            return nil
+        }
+        return DashboardHeaderView.create(data: data)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        viewModel.getHeaderData() == nil ? 0 : UITableView.automaticDimension
     }
 }
 

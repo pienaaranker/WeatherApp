@@ -8,5 +8,7 @@
 import Foundation
 
 protocol DashboardViewable: class {
-    
+    func showError(message: String)
+    func updateCurrentWeather(currentWeather: WeatherCurrentResponse)
+    func reloadTableView()
 }
