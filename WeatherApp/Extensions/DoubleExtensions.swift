@@ -9,6 +9,6 @@ import Foundation
 
 extension Double {
     func temperatureString() -> String {
-        return "\(self)°"
+        return "\(Int(self))°"
     }
 }

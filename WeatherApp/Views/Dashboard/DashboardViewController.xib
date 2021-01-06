@@ -11,8 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageView" destination="5sZ-mZ-FF3" id="yz0-sW-RLN"/>
-                <outlet property="degreesView" destination="dHZ-00-uQ3" id="SVf-5g-kTc"/>
                 <outlet property="tableView" destination="0ss-rC-VOT" id="Jqu-Jv-RSD"/>
+                <outlet property="temperatureLabel" destination="z8V-jQ-9jy" id="LEk-3K-Nao"/>
                 <outlet property="view" destination="BuU-OR-iEh" id="F8Z-Jb-pix"/>
                 <outlet property="weatherTypeLabel" destination="pfb-jq-8TX" id="7lp-s6-Gea"/>
             </connections>
@@ -35,15 +35,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-00-uQ3" customClass="DegreesLabelView" customModule="WeatherApp" customModuleProvider="target">
-                    <rect key="frame" x="132" y="59" width="150" height="150"/>
-                    <viewLayoutGuide key="safeArea" id="Tgf-8Y-lL9"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="1f5-87-N8w"/>
-                        <constraint firstAttribute="height" constant="150" id="MLc-rq-Yas"/>
-                    </constraints>
-                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8V-jQ-9jy">
+                    <rect key="frame" x="186" y="188" width="42" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="ohE-qw-Ox8"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,10 +53,10 @@
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="centerY" secondItem="5sZ-mZ-FF3" secondAttribute="centerY" id="TkZ-fP-T9g"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="trailing" secondItem="ohE-qw-Ox8" secondAttribute="trailing" id="VnI-hC-s2T"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="bottom" secondItem="ohE-qw-Ox8" secondAttribute="bottom" id="XHe-D9-WFM"/>
-                <constraint firstItem="dHZ-00-uQ3" firstAttribute="centerX" secondItem="pfb-jq-8TX" secondAttribute="centerX" id="hAi-YF-PcU"/>
+                <constraint firstItem="pfb-jq-8TX" firstAttribute="top" secondItem="z8V-jQ-9jy" secondAttribute="bottom" constant="8.5" id="fTz-e8-C86"/>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="hP6-8r-9Vc"/>
+                <constraint firstItem="z8V-jQ-9jy" firstAttribute="centerX" secondItem="pfb-jq-8TX" secondAttribute="centerX" id="rWp-fu-NjU"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="yB9-GY-yda"/>
-                <constraint firstItem="pfb-jq-8TX" firstAttribute="top" secondItem="dHZ-00-uQ3" secondAttribute="bottom" constant="7.5" id="zm8-8O-zwY"/>
             </constraints>
             <point key="canvasLocation" x="-55.072463768115945" y="-530.35714285714289"/>
         </view>

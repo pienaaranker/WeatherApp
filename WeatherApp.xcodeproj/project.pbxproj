@@ -13,8 +13,6 @@
 		080277452582379800E7EBC1 /* DashboardViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080277442582379800E7EBC1 /* DashboardViewable.swift */; };
 		0802775E25823D6000E7EBC1 /* DashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0802775D25823D6000E7EBC1 /* DashboardHeaderView.swift */; };
 		0802776425823D8900E7EBC1 /* DashboardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0802776325823D8900E7EBC1 /* DashboardHeaderView.xib */; };
-		0802776A25823DF200E7EBC1 /* DegreesLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0802776925823DF200E7EBC1 /* DegreesLabelView.xib */; };
-		0802776F25823F0200E7EBC1 /* DegreesLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0802776E25823F0200E7EBC1 /* DegreesLabelView.swift */; };
 		080277742582431800E7EBC1 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080277732582431800E7EBC1 /* UIViewExtensions.swift */; };
 		080B243E257FF33300C87AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B243D257FF33300C87AA3 /* AppDelegate.swift */; };
 		080B2440257FF33300C87AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B243F257FF33300C87AA3 /* SceneDelegate.swift */; };
@@ -76,8 +74,6 @@
 		080277442582379800E7EBC1 /* DashboardViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewable.swift; sourceTree = "<group>"; };
 		0802775D25823D6000E7EBC1 /* DashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderView.swift; sourceTree = "<group>"; };
 		0802776325823D8900E7EBC1 /* DashboardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHeaderView.xib; sourceTree = "<group>"; };
-		0802776925823DF200E7EBC1 /* DegreesLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DegreesLabelView.xib; sourceTree = "<group>"; };
-		0802776E25823F0200E7EBC1 /* DegreesLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesLabelView.swift; sourceTree = "<group>"; };
 		080277732582431800E7EBC1 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		080B243A257FF33300C87AA3 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080B243D257FF33300C87AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,15 +187,6 @@
 			path = DashboardHeaderView;
 			sourceTree = "<group>";
 		};
-		0802776825823DCD00E7EBC1 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				0802776925823DF200E7EBC1 /* DegreesLabelView.xib */,
-				0802776E25823F0200E7EBC1 /* DegreesLabelView.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		080B2431257FF33300C87AA3 = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +244,6 @@
 		080B2497257FFA8B00C87AA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0802776825823DCD00E7EBC1 /* Common */,
 				080B2499257FFAB700C87AA3 /* Dashboard */,
 			);
 			path = Views;
@@ -512,7 +498,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0802776A25823DF200E7EBC1 /* DegreesLabelView.xib in Resources */,
 				0802776425823D8900E7EBC1 /* DashboardHeaderView.xib in Resources */,
 				082299B825A61406004BDC4C /* ForecastTableViewCell.xib in Resources */,
 				080B244A257FF33300C87AA3 /* LaunchScreen.storyboard in Resources */,
@@ -618,7 +603,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0802776F25823F0200E7EBC1 /* DegreesLabelView.swift in Sources */,
 				0802775E25823D6000E7EBC1 /* DashboardHeaderView.swift in Sources */,
 				08D780972590D9B10082EC32 /* WeatherForecastListItem.swift in Sources */,
 				085AB7512590A2A100E5A89A /* WeatherRequest.swift in Sources */,

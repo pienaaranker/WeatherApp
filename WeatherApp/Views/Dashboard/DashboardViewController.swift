@@ -10,7 +10,7 @@ import UIKit
 class DashboardViewController: UIViewController, DashboardViewable {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var degreesView: DegreesLabelView!
+    @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherTypeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -46,6 +46,11 @@ class DashboardViewController: UIViewController, DashboardViewable {
     }
     
     func configureLabels() {
+        temperatureLabel.font = AppConfig.shared.theme.primaryFont.withSize(64)
+        temperatureLabel.textColor = AppConfig.shared.theme.primaryTextColor
+        temperatureLabel.textAlignment = .center
+        temperatureLabel.text = ""
+        
         weatherTypeLabel.font = AppConfig.shared.theme.primaryFont.withSize(36)
         weatherTypeLabel.textColor = AppConfig.shared.theme.primaryTextColor
         weatherTypeLabel.textAlignment = .center
@@ -59,6 +64,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
         self.tableView.sectionFooterHeight = 0.5
         self.tableView.tableFooterView = UIView()
         self.tableView.estimatedSectionHeaderHeight = 80
+        self.tableView.separatorStyle = .none
         
         let nib = UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
@@ -70,7 +76,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
     }
     
     func updateCurrentWeather(currentWeather: WeatherCurrentResponse) {
-//        degreesView.setTemperature(temperature: "\(currentWeather.main.feels_like)")
+        temperatureLabel.text = currentWeather.main.temp.temperatureString()
         weatherTypeLabel.text = currentWeather.weather?.first?.description.uppercased()
     }
     
