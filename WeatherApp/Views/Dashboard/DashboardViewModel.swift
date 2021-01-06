@@ -59,4 +59,17 @@ class DashboardViewModel: WeatherManagerDelegate {
                                         max: current.main.temp_max,
                                         color: AppConfig.shared.theme.sunnyColor)
     }
+    
+    func getNumberOfSections() -> Int {
+        return currentWeather == nil ? 0 : 1
+    }
+    
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        if let forecast = weatherForecast {
+            return forecast.list.count
+        } else {
+            return 0
+        }
+    }
+
 }

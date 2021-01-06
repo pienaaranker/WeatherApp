@@ -30,7 +30,7 @@ class WeatherManager {
     }
     
     func fetchCurrentWeather(for cityName: String) {
-        let request = WeatherRequest(q: cityName, appid: AppConfig.shared.weatherAPIKey)
+        let request = WeatherRequest(q: cityName, units: "metric", appid: AppConfig.shared.weatherAPIKey)
         guard let parameters = request.toQueryDictionary(),
             let url = WeatherManager.endPoints.weatherCurrent(parameters: parameters) else {
             fatalError("Could not parse weather api to url")
@@ -55,7 +55,7 @@ class WeatherManager {
     }
     
     func fetchWeatherForecast(for cityName: String) {
-        let request = WeatherRequest(q: cityName, appid: AppConfig.shared.weatherAPIKey)
+        let request = WeatherRequest(q: cityName, units: "metric", appid: AppConfig.shared.weatherAPIKey)
         guard let parameters = request.toQueryDictionary(),
               let url = WeatherManager.endPoints.weatherForcast(parameters: parameters) else {
             fatalError("Could not parse weather api to url")

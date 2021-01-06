@@ -28,6 +28,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
         configureImage()
         configureLabels()
         configureTableView()
@@ -45,10 +46,6 @@ class DashboardViewController: UIViewController, DashboardViewable {
     }
     
     func configureLabels() {
-        degreesView.configure(temperature: "25",
-                              font: AppConfig.shared.theme.primaryFont.withSize(68),
-                              textColor: AppConfig.shared.theme.primaryTextColor)
-        
         weatherTypeLabel.font = AppConfig.shared.theme.primaryFont.withSize(36)
         weatherTypeLabel.textColor = AppConfig.shared.theme.primaryTextColor
         weatherTypeLabel.textAlignment = .center
@@ -60,7 +57,11 @@ class DashboardViewController: UIViewController, DashboardViewable {
         self.tableView.dataSource = self
         self.tableView.backgroundColor = AppConfig.shared.theme.sunnyColor
         self.tableView.sectionFooterHeight = 0.5
+        self.tableView.tableFooterView = UIView()
         self.tableView.estimatedSectionHeaderHeight = 80
+        
+        let nib = UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
     }
     
     // MARK: - Viewable
@@ -81,15 +82,26 @@ class DashboardViewController: UIViewController, DashboardViewable {
 // MARK: - TableView Delegate & Data Source
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.getNumberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.getNumberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForecastTableViewCell.self)) as? ForecastTableViewCell,
+              let data = viewModel.weatherForecast else {
+            return UITableViewCell()
+        }
+        
+        let dayName = data.list[indexPath.row].dt_txt
+        let image = Images.WeatherTypes.clear
+        let temp = data.list[indexPath.row].main.temp
+        
+        cell.configure(dayName: dayName, typeImage: image, temperature: temp)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

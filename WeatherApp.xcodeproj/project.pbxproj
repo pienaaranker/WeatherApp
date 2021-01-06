@@ -28,6 +28,8 @@
 		082299A625A6012C004BDC4C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082299A525A6012C004BDC4C /* Strings.swift */; };
 		082299AA25A60637004BDC4C /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082299A925A60637004BDC4C /* DoubleExtensions.swift */; };
 		082299AF25A609ED004BDC4C /* DashboardHeaderViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082299AE25A609ED004BDC4C /* DashboardHeaderViewData.swift */; };
+		082299B725A61406004BDC4C /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082299B525A61406004BDC4C /* ForecastTableViewCell.swift */; };
+		082299B825A61406004BDC4C /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082299B625A61406004BDC4C /* ForecastTableViewCell.xib */; };
 		085AB73A25909C8400E5A89A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AB73925909C8400E5A89A /* NetworkManager.swift */; };
 		085AB74C2590A28500E5A89A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AB74B2590A28500E5A89A /* WeatherManager.swift */; };
 		085AB7512590A2A100E5A89A /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AB7502590A2A100E5A89A /* WeatherRequest.swift */; };
@@ -93,6 +95,8 @@
 		082299A525A6012C004BDC4C /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		082299A925A60637004BDC4C /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		082299AE25A609ED004BDC4C /* DashboardHeaderViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderViewData.swift; sourceTree = "<group>"; };
+		082299B525A61406004BDC4C /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		082299B625A61406004BDC4C /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewCell.xib; sourceTree = "<group>"; };
 		085AB73925909C8400E5A89A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		085AB74B2590A28500E5A89A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		085AB7502590A2A100E5A89A /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 		0802775C25823D1000E7EBC1 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				082299B425A613E0004BDC4C /* ForecastCell */,
 				0802776225823D7700E7EBC1 /* DashboardHeaderView */,
 			);
 			path = TableViewCells;
@@ -290,6 +295,15 @@
 				082299A525A6012C004BDC4C /* Strings.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		082299B425A613E0004BDC4C /* ForecastCell */ = {
+			isa = PBXGroup;
+			children = (
+				082299B525A61406004BDC4C /* ForecastTableViewCell.swift */,
+				082299B625A61406004BDC4C /* ForecastTableViewCell.xib */,
+			);
+			path = ForecastCell;
 			sourceTree = "<group>";
 		};
 		085AB74A2590A24000E5A89A /* Weather */ = {
@@ -500,6 +514,7 @@
 			files = (
 				0802776A25823DF200E7EBC1 /* DegreesLabelView.xib in Resources */,
 				0802776425823D8900E7EBC1 /* DashboardHeaderView.xib in Resources */,
+				082299B825A61406004BDC4C /* ForecastTableViewCell.xib in Resources */,
 				080B244A257FF33300C87AA3 /* LaunchScreen.storyboard in Resources */,
 				080B2447257FF33300C87AA3 /* Assets.xcassets in Resources */,
 				080277372582367600E7EBC1 /* DashboardViewController.xib in Resources */,
@@ -614,6 +629,7 @@
 				085AB77A2590B3D800E5A89A /* APIRequest.swift in Sources */,
 				080B248C257FFA8000C87AA3 /* UIColorExtensions.swift in Sources */,
 				082299AA25A60637004BDC4C /* DoubleExtensions.swift in Sources */,
+				082299B725A61406004BDC4C /* ForecastTableViewCell.swift in Sources */,
 				080B243E257FF33300C87AA3 /* AppDelegate.swift in Sources */,
 				086CBD522590C2660022C804 /* WeatherMain.swift in Sources */,
 				080B247F257FF84500C87AA3 /* Theme.swift in Sources */,
