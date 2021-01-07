@@ -22,7 +22,7 @@ class ForecastTableViewCell: UITableViewCell {
         temperatureLabel.font = AppConfig.shared.theme.primaryFont.withSize(14)
         temperatureLabel.textColor = AppConfig.shared.theme.primaryTextColor
         
-        backgroundColor = AppConfig.shared.theme.sunnyColor
+        backgroundColor = .clear
         
     }
 

@@ -22,11 +22,11 @@ class DashboardViewModel: WeatherManagerDelegate {
     }
     
     func fetchWeatherCurrent() {
-        weatherManager?.fetchCurrentWeather(for: "Cape Town")
+        weatherManager?.fetchCurrentWeather(for: "London")
     }
     
     func fetchWeatherForecast() {
-        weatherManager?.fetchWeatherForecast(for: "Cape Town")
+        weatherManager?.fetchWeatherForecast(for: "London")
     }
     
     func fetchCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {
@@ -50,14 +50,15 @@ class DashboardViewModel: WeatherManagerDelegate {
     }
     
     func getHeaderData() -> DashboardHeaderViewData? {
-        guard let current = self.currentWeather else {
+        guard let current = self.currentWeather,
+              let type = current.weather?.first?.main else {
             return nil
         }
         
         return DashboardHeaderViewData(min: current.main.temp_min,
                                         current: current.main.temp,
                                         max: current.main.temp_max,
-                                        color: AppConfig.shared.theme.sunnyColor)
+                                        color: backgroundColor(for: type))
     }
     
     func getNumberOfSections() -> Int {
@@ -69,6 +70,45 @@ class DashboardViewModel: WeatherManagerDelegate {
             return forecast.list.count
         } else {
             return 0
+        }
+    }
+    
+    func listImage(for weatherType: WeatherType) -> UIImage {
+        switch weatherType {
+        case .clear:
+            return Images.WeatherTypes.clear
+        case .clouds:
+            return Images.WeatherTypes.partlySunny
+        case .rain:
+            return Images.WeatherTypes.rain
+        default:
+            return Images.WeatherTypes.rain
+        }
+    }
+    
+    func backgroundImage(for weatherType: WeatherType) -> UIImage {
+        switch weatherType {
+        case .clear:
+            return Images.Sunny.forest
+        case .clouds:
+            return Images.Cloudy.forest
+        case .rain:
+            return Images.Rainy.forest
+        default:
+            return Images.Rainy.forest
+        }
+    }
+    
+    func backgroundColor(for weatherType: WeatherType) -> UIColor {
+        switch weatherType {
+        case .clear:
+            return AppConfig.shared.theme.sunnyColor
+        case .clouds:
+            return AppConfig.shared.theme.rainyColor
+        case .rain:
+            return AppConfig.shared.theme.rainyColor
+        default:
+            return AppConfig.shared.theme.rainyColor
         }
     }
 

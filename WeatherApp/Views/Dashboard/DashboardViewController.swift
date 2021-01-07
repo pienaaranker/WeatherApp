@@ -78,6 +78,11 @@ class DashboardViewController: UIViewController, DashboardViewable {
     func updateCurrentWeather(currentWeather: WeatherCurrentResponse) {
         temperatureLabel.text = currentWeather.main.temp.temperatureString()
         weatherTypeLabel.text = currentWeather.weather?.first?.description.uppercased()
+        if let type = currentWeather.weather?.first?.main {
+            backgroundImageView.image = viewModel.backgroundImage(for: type)
+            view.backgroundColor = viewModel.backgroundColor(for: type)
+            tableView.backgroundColor = viewModel.backgroundColor(for: type)
+        }
     }
     
     func reloadTableView() {        
@@ -101,9 +106,11 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let dayName = data.list[indexPath.row].dt_txt
-        let image = Images.WeatherTypes.clear
-        let temp = data.list[indexPath.row].main.temp
+        let weatherItem = data.list[indexPath.row]
+        let dayName = weatherItem.dt_txt
+        let image = viewModel.listImage(for: weatherItem.weather?.first?.main ?? .clear)
+        let temp = weatherItem.main.temp
+        
         
         cell.configure(dayName: dayName, typeImage: image, temperature: temp)
         
