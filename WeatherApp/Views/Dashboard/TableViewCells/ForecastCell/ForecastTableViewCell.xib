@@ -16,36 +16,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="616" height="113"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="vnw-A4-3ct">
-                        <rect key="frame" x="16" y="8" width="584" height="97"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-bm-t8W">
-                                <rect key="frame" x="0.0" y="38.5" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="KZO-rm-MKI">
-                                <rect key="frame" x="277" y="33.5" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1wC-tM-cdk"/>
-                                    <constraint firstAttribute="width" constant="30" id="HTO-q5-4wb"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1w-Mb-00Y">
-                                <rect key="frame" x="542.5" y="38.5" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-bm-t8W">
+                        <rect key="frame" x="20" y="46.5" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1w-Mb-00Y">
+                        <rect key="frame" x="554" y="46.5" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="KZO-rm-MKI">
+                        <rect key="frame" x="293" y="41.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="1wC-tM-cdk"/>
+                            <constraint firstAttribute="width" constant="30" id="HTO-q5-4wb"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="vnw-A4-3ct" secondAttribute="bottom" constant="8" id="19p-ht-plP"/>
-                    <constraint firstAttribute="trailing" secondItem="vnw-A4-3ct" secondAttribute="trailing" constant="16" id="ID3-xR-tbJ"/>
-                    <constraint firstItem="vnw-A4-3ct" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Q0z-z3-l6B"/>
-                    <constraint firstItem="vnw-A4-3ct" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rKy-Vf-KbO"/>
+                    <constraint firstItem="j2Q-bm-t8W" firstAttribute="centerY" secondItem="KZO-rm-MKI" secondAttribute="centerY" id="2eh-uM-z1V"/>
+                    <constraint firstItem="KZO-rm-MKI" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="44T-S0-EaH"/>
+                    <constraint firstItem="KZO-rm-MKI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="A6M-9q-nLb"/>
+                    <constraint firstItem="D1w-Mb-00Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KZO-rm-MKI" secondAttribute="trailing" constant="8" id="Bqm-WC-Nus"/>
+                    <constraint firstItem="D1w-Mb-00Y" firstAttribute="centerY" secondItem="KZO-rm-MKI" secondAttribute="centerY" id="Lza-up-Wen"/>
+                    <constraint firstItem="KZO-rm-MKI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j2Q-bm-t8W" secondAttribute="trailing" constant="8" id="SZ4-Em-XRV"/>
+                    <constraint firstAttribute="trailing" secondItem="D1w-Mb-00Y" secondAttribute="trailing" constant="20.5" id="WPU-qq-VLf"/>
+                    <constraint firstItem="j2Q-bm-t8W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="X3w-i6-nzi"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

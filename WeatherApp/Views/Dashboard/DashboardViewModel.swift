@@ -12,9 +12,9 @@ class DashboardViewModel: WeatherManagerDelegate {
     
     private weak var viewable: DashboardViewable?
     
-    var weatherManager: WeatherManager?    
-    var currentWeather: WeatherCurrentResponse?
-    var weatherForecast: WeatherForecastResponse?
+    private var weatherManager: WeatherManager?    
+    private var currentWeather: WeatherCurrentResponse?
+    private var weatherForecast: WeatherForecastResponse?
     var filteredForecastList: [WeatherForecastListItem] = []
     private let dateFormatter = DateFormatter()
     
@@ -70,7 +70,10 @@ class DashboardViewModel: WeatherManagerDelegate {
                 list.append(elementWithMaxTemp.element)
             }
         }
-        self.filteredForecastList = list
+        
+        self.filteredForecastList = list.sorted(by: { (item, next) -> Bool in
+            return item.dt < next.dt
+        })
     }
     
     func getHeaderData() -> DashboardHeaderViewData? {
