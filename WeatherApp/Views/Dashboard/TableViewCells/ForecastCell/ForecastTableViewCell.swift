@@ -25,14 +25,8 @@ class ForecastTableViewCell: UITableViewCell {
         backgroundColor = .clear
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configure(dayName: String, typeImage: UIImage, temperature: Double) {
+    func configure(dayName: String, typeImage: UIImage, temperature: Double) {        
         dayLabel.text = dayName
         weatherTypeImageView.image = typeImage
         temperatureLabel.text = temperature.temperatureString()

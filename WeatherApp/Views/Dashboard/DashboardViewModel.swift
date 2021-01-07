@@ -15,6 +15,8 @@ class DashboardViewModel: WeatherManagerDelegate {
     var weatherManager: WeatherManager?    
     var currentWeather: WeatherCurrentResponse?
     var weatherForecast: WeatherForecastResponse?
+    var filteredForecastList: [WeatherForecastListItem] = []
+    private let dateFormatter = DateFormatter()
     
     init(viewable: DashboardViewable) {
         self.viewable = viewable
@@ -22,11 +24,11 @@ class DashboardViewModel: WeatherManagerDelegate {
     }
     
     func fetchWeatherCurrent() {
-        weatherManager?.fetchCurrentWeather(for: "London")
+        weatherManager?.fetchCurrentWeather(for: "Cape Town")
     }
     
     func fetchWeatherForecast() {
-        weatherManager?.fetchWeatherForecast(for: "London")
+        weatherManager?.fetchWeatherForecast(for: "Cape Town")
     }
     
     func fetchCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {
@@ -44,9 +46,31 @@ class DashboardViewModel: WeatherManagerDelegate {
             if let error = error {
                 self.viewable?.showError(message: error.errorDescription ?? "")
             } else {
-                self.weatherForecast = weatherForecast
+                filter5dayForecast(response: weatherForecast)
                 self.viewable?.reloadTableView()
             }
+    }
+    
+    func filter5dayForecast(response: WeatherForecastResponse?) {
+        var list: [WeatherForecastListItem] = []
+        let daysOfTheWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+        dateFormatter.dateFormat = "EEEE"
+        
+        daysOfTheWeek.forEach { (day) in
+            if let elementWithMaxTemp = response?.list
+                .enumerated()
+                .filter({ i, item in
+                    let date = Date(timeIntervalSince1970: Double(item.dt))
+                    return dateFormatter.string(from: date) == day
+                })
+                .max(by: { (prev, next) -> Bool in
+                    prev.element.main.temp_max < next.element.main.temp_max
+                }) {
+                
+                list.append(elementWithMaxTemp.element)
+            }
+        }
+        self.filteredForecastList = list
     }
     
     func getHeaderData() -> DashboardHeaderViewData? {
@@ -66,11 +90,7 @@ class DashboardViewModel: WeatherManagerDelegate {
     }
     
     func getNumberOfRowsInSection(section: Int) -> Int {
-        if let forecast = weatherForecast {
-            return forecast.list.count
-        } else {
-            return 0
-        }
+        return filteredForecastList.count
     }
     
     func listImage(for weatherType: WeatherType) -> UIImage {
@@ -110,6 +130,12 @@ class DashboardViewModel: WeatherManagerDelegate {
         default:
             return AppConfig.shared.theme.rainyColor
         }
+    }
+    
+    func dateName(for forecastItem: WeatherForecastListItem) -> String {
+        let date = Date(timeIntervalSince1970: Double(forecastItem.dt))
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date)
     }
 
 }

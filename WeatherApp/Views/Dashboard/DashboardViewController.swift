@@ -65,6 +65,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
         self.tableView.tableFooterView = UIView()
         self.tableView.estimatedSectionHeaderHeight = 80
         self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
         
         let nib = UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
@@ -101,16 +102,14 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForecastTableViewCell.self)) as? ForecastTableViewCell,
-              let data = viewModel.weatherForecast else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForecastTableViewCell.self)) as? ForecastTableViewCell else {
             return UITableViewCell()
         }
         
-        let weatherItem = data.list[indexPath.row]
-        let dayName = weatherItem.dt_txt
+        let weatherItem = viewModel.filteredForecastList[indexPath.row]
+        let dayName = viewModel.dateName(for: weatherItem)
         let image = viewModel.listImage(for: weatherItem.weather?.first?.main ?? .clear)
         let temp = weatherItem.main.temp
-        
         
         cell.configure(dayName: dayName, typeImage: image, temperature: temp)
         
