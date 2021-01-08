@@ -32,4 +32,8 @@ struct Images {
         static let rain = UIImage(named: "rain")!
         
     }
+    
+    struct Buttons {
+        static let search = UIImage(named: "search")
+    }
 }

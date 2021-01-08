@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import MapKit
 
 class DashboardViewModel: WeatherManagerDelegate {
     
@@ -16,6 +17,7 @@ class DashboardViewModel: WeatherManagerDelegate {
     private var currentWeather: WeatherCurrentResponse?
     private var weatherForecast: WeatherForecastResponse?
     var filteredForecastList: [WeatherForecastListItem] = []
+    var lastSearchedLocation: String?
     private let dateFormatter = DateFormatter()
     
     init(viewable: DashboardViewable) {
@@ -23,12 +25,21 @@ class DashboardViewModel: WeatherManagerDelegate {
         self.weatherManager = WeatherManager(delegate: self)
     }
     
-    func fetchWeatherCurrent() {
-        weatherManager?.fetchCurrentWeather(for: "Cape Town")
+    func fetchWeatherCurrent(coordinates: CLLocation) {
+        weatherManager?.fetchCurrentWeather(for: coordinates)
     }
     
-    func fetchWeatherForecast() {
-        weatherManager?.fetchWeatherForecast(for: "Cape Town")
+    func fetchWeatherCurrent(cityName: String) {
+        lastSearchedLocation = cityName
+        weatherManager?.fetchCurrentWeather(for: cityName)
+    }
+    
+    func fetchWeatherForecast(coordinates: CLLocation) {
+        weatherManager?.fetchWeatherForecast(for: coordinates)
+    }
+    
+    func fetchWeatherForecast(cityName: String) {
+        weatherManager?.fetchWeatherForecast(for: cityName)
     }
     
     func fetchCurrentWeatherResponded(with currentWeather: WeatherCurrentResponse?, error: AFError?) {

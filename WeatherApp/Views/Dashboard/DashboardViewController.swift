@@ -6,18 +6,21 @@
 //
 
 import UIKit
+import MapKit
 
 class DashboardViewController: UIViewController, DashboardViewable {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherTypeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: DashboardViewModel!
+    let locationManager = CLLocationManager()
     
     init(){
-        super.init(nibName:String(describing: type(of: self)), bundle: Bundle(for: DashboardViewController.self))
+        super.init(nibName:String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
         viewModel = DashboardViewModel(viewable: self)
     }
     
@@ -32,8 +35,7 @@ class DashboardViewController: UIViewController, DashboardViewable {
         configureImage()
         configureLabels()
         configureTableView()
-        viewModel.fetchWeatherCurrent()
-        viewModel.fetchWeatherForecast()        
+        configureLocationManager()
     }
     
     func configureView() {
@@ -55,6 +57,11 @@ class DashboardViewController: UIViewController, DashboardViewable {
         weatherTypeLabel.textColor = AppConfig.shared.theme.primaryTextColor
         weatherTypeLabel.textAlignment = .center
         weatherTypeLabel.text = "Loading..."
+        
+        locationLabel.font = AppConfig.shared.theme.primaryFont.withSize(24)
+        locationLabel.textColor = AppConfig.shared.theme.primaryTextColor
+        locationLabel.textAlignment = .center
+        locationLabel.text = "Current location"
     }
     
     func configureTableView() {
@@ -71,6 +78,21 @@ class DashboardViewController: UIViewController, DashboardViewable {
         self.tableView.register(nib, forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
     }
     
+    func configureLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+    
+    @IBAction func tappedSearch(_ sender: Any) {
+        let resultsController = SearchResultsTableViewController(delegate: self)
+        let searchVC = UISearchController(searchResultsController: resultsController)
+        searchVC.searchResultsUpdater = resultsController
+        searchVC.searchBar.placeholder = "Search"
+        present(searchVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Viewable
     func showError(message: String) {
         self.showAlert(title: GlobalStrings.Alert.errorTitle, message: message, handler: nil)
@@ -83,6 +105,10 @@ class DashboardViewController: UIViewController, DashboardViewable {
             backgroundImageView.image = viewModel.backgroundImage(for: type)
             view.backgroundColor = viewModel.backgroundColor(for: type)
             tableView.backgroundColor = viewModel.backgroundColor(for: type)
+        }
+        
+        if let lastLocation = viewModel.lastSearchedLocation {
+            locationLabel.text = lastLocation
         }
     }
     
@@ -128,3 +154,28 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension DashboardViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            viewModel.fetchWeatherCurrent(coordinates: location)
+            viewModel.fetchWeatherForecast(coordinates: location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error)")
+    }
+}
+
+extension DashboardViewController: SearchResultsTableViewControllerDelegate {
+    func didSelect(result: String) {
+        viewModel.fetchWeatherCurrent(cityName: result)
+        viewModel.fetchWeatherForecast(cityName: result)
+    }
+}

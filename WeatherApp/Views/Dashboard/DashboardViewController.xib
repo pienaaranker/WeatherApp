@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageView" destination="5sZ-mZ-FF3" id="yz0-sW-RLN"/>
+                <outlet property="locationLabel" destination="jhf-jk-NIn" id="nP0-Zy-5qL"/>
                 <outlet property="tableView" destination="0ss-rC-VOT" id="Jqu-Jv-RSD"/>
                 <outlet property="temperatureLabel" destination="z8V-jQ-9jy" id="LEk-3K-Nao"/>
                 <outlet property="view" destination="BuU-OR-iEh" id="F8Z-Jb-pix"/>
@@ -41,20 +42,42 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwN-LE-2dy">
+                    <rect key="frame" x="358" y="44" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ZK4-G9-Ujl"/>
+                        <constraint firstAttribute="width" constant="40" id="e5k-d1-gmL"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="magnifyingglass" catalog="system"/>
+                    <connections>
+                        <action selector="tappedSearch:" destination="-1" eventType="touchUpInside" id="Mbh-LG-uBP"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhf-jk-NIn">
+                    <rect key="frame" x="186" y="54" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="ohE-qw-Ox8"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="top" secondItem="BuU-OR-iEh" secondAttribute="top" id="2Nh-Y2-mUY"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="top" secondItem="5sZ-mZ-FF3" secondAttribute="bottom" id="2TL-Ea-8z2"/>
+                <constraint firstItem="gwN-LE-2dy" firstAttribute="top" secondItem="ohE-qw-Ox8" secondAttribute="top" id="BY9-5H-bEi"/>
+                <constraint firstItem="jhf-jk-NIn" firstAttribute="top" secondItem="ohE-qw-Ox8" secondAttribute="top" constant="10" id="GRI-vG-4mz"/>
                 <constraint firstItem="ohE-qw-Ox8" firstAttribute="centerY" secondItem="5sZ-mZ-FF3" secondAttribute="bottom" id="Geu-uD-Tiu"/>
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="centerX" secondItem="5sZ-mZ-FF3" secondAttribute="centerX" id="Hh4-5t-Fe1"/>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="trailing" secondItem="ohE-qw-Ox8" secondAttribute="trailing" id="JD9-6T-RsB"/>
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="centerY" secondItem="5sZ-mZ-FF3" secondAttribute="centerY" id="TkZ-fP-T9g"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="trailing" secondItem="ohE-qw-Ox8" secondAttribute="trailing" id="VnI-hC-s2T"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="bottom" secondItem="ohE-qw-Ox8" secondAttribute="bottom" id="XHe-D9-WFM"/>
+                <constraint firstItem="jhf-jk-NIn" firstAttribute="centerX" secondItem="BuU-OR-iEh" secondAttribute="centerX" id="ckz-nd-4X7"/>
                 <constraint firstItem="pfb-jq-8TX" firstAttribute="top" secondItem="z8V-jQ-9jy" secondAttribute="bottom" constant="8.5" id="fTz-e8-C86"/>
                 <constraint firstItem="5sZ-mZ-FF3" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="hP6-8r-9Vc"/>
+                <constraint firstItem="ohE-qw-Ox8" firstAttribute="trailing" secondItem="gwN-LE-2dy" secondAttribute="trailing" constant="16" id="mrW-n9-yVg"/>
                 <constraint firstItem="z8V-jQ-9jy" firstAttribute="centerX" secondItem="pfb-jq-8TX" secondAttribute="centerX" id="rWp-fu-NjU"/>
                 <constraint firstItem="0ss-rC-VOT" firstAttribute="leading" secondItem="ohE-qw-Ox8" secondAttribute="leading" id="yB9-GY-yda"/>
             </constraints>
@@ -62,6 +85,7 @@
         </view>
     </objects>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
