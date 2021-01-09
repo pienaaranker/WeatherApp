@@ -124,7 +124,7 @@ class WeatherManager {
                     print("Could not parse json: \(error)")
                 }
             } else if let error = error {
-                self.delegate?.fetchCurrentWeatherResponded(with: nil, error: error)
+                self.delegate?.fetchWeatherForecastResponded(with: nil, error: error)
             }
         }
     }

@@ -13,8 +13,8 @@ class DashboardViewModel: WeatherManagerDelegate {
     
     private weak var viewable: DashboardViewable?
     
-    private var weatherManager: WeatherManager?    
-    private var currentWeather: WeatherCurrentResponse?
+    var weatherManager: WeatherManager?    
+    var currentWeather: WeatherCurrentResponse?
     private var weatherForecast: WeatherForecastResponse?
     var filteredForecastList: [WeatherForecastListItem] = []
     var lastSearchedLocation: String?
@@ -68,17 +68,16 @@ class DashboardViewModel: WeatherManagerDelegate {
         dateFormatter.dateFormat = "EEEE"
         
         daysOfTheWeek.forEach { (day) in
-            if let elementWithMaxTemp = response?.list
-                .enumerated()
-                .filter({ i, item in
+            if let itemWithMaxTemp = response?.list
+                .filter({ item in
                     let date = Date(timeIntervalSince1970: Double(item.dt))
                     return dateFormatter.string(from: date) == day
                 })
                 .max(by: { (prev, next) -> Bool in
-                    prev.element.main.temp_max < next.element.main.temp_max
+                    prev.main.temp_max < next.main.temp_max
                 }) {
                 
-                list.append(elementWithMaxTemp.element)
+                list.append(itemWithMaxTemp)
             }
         }
         

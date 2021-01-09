@@ -10,7 +10,25 @@ import Foundation
 
 class DashboardViewableMock: DashboardViewable {
     
+    var errorShown: String?
+    var updatedWeather: WeatherCurrentResponse?
+    var reloadTableViewCalled = false
+    
+    func showError(message: String) {
+        errorShown = message
+    }
+    
+    func updateCurrentWeather(currentWeather: WeatherCurrentResponse) {
+        updatedWeather = currentWeather
+    }
+    
+    func reloadTableView() {
+        reloadTableViewCalled = true
+    }
+    
     func reset() {
-        
+        errorShown = nil
+        updatedWeather = nil
+        reloadTableViewCalled = false
     }
 }
